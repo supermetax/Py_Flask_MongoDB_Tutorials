@@ -11,3 +11,9 @@ venv/
 
 # Ignore environment variables file
 .env
+
+# Downladed Videos are placed here
+downloads/
+
+# Extra files used for testing
+zz_extras/

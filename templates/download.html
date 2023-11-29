@@ -1,0 +1,98 @@
+<!-- templates/download.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tube Loader</title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^3/dist/tailwind.min.css">
+  <style>
+    body {
+      background-color: #F8FAFC;
+    }
+
+    header {
+      background-color: #FFFFFF;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+      padding: 1rem 2rem;
+    }
+
+    main {
+      padding: 2rem 0;
+    }
+
+    section {
+      background-color: #FFFFFF;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #FFFFFF;
+      border: 1px solid #007BFF;
+      border-radius: 4px;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #F8FAFC;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="flex justify-between items-center">
+    <h1 class="text-xl font-bold">Tube Loader</h1>
+    <nav class="flex space-x-4">
+      <a href="#" class="text-black hover:underline">Home</a>
+      <a href="#" class="text-black hover:underline">YouTube to MP3</a>
+      <a href="#" class="text-black hover:underline">+ YouTube Shorts</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="text-center">
+      <img src="{{url_for('img', filename='tubeLoader.jfif')}}" alt="tubeLoader logo">
+      <h1 class="text-3xl font-bold">Youtube Downloader</h1>
+      <p class="text-gray-600">Paste Youtube link and start downloading.</p>
+    </section>
+
+    <section class="mt-12 flex flex-col justify-center items-center">
+        <form method="POST" action="/download">
+            <label for="video_url">YouTube Video URL:</label>
+            <input type="text" id="video_url" name="video_url" placeholder="Enter YouTube Video URL" required class="w-full px-4 py-2 border-2 border-gray-300 rounded-md focus:outline-none">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4">Download</button>
+        </form>
+    </section>
+
+    {% if video_info %}
+        <h3 class="text-center mt-8">Download Result</h3>
+        <p class="text-center text-gray-600">Video Title: {{ video_info['title'] }}</p>
+        <p class="text-center text-gray-600">Video Author: {{ video_info['author'] }}</p>
+        <img src="{{ video_info['thumbnail'] }}" alt="Video Thumbnail" class="mx-auto mt-4">
+    {% endif %}
+
+    <section class="mt-12 text-center">
+      <p class="text-gray-600">By using our service you are accepting our terms of service.</p>
+    </section>
+  </main>
+
+  <footer class="bg-gray-300 text-center py-4">
+    <p class="text-gray-600">Best Youtube Video Downloader | Copyright &copy; 2023 TubeLoader</p>
+  </footer>
+</body>
+
+</html>
